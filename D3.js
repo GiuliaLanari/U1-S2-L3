@@ -112,10 +112,10 @@ const charactersNames = [];
   Come risultato dovresti ottenere qualcosa di simile: ["Luke Skywalker", "C-3PO", "R2-D2", etc..]
 */
 for (let i = 0; i < starWarsCharacters.length; i++) {
-  const nameObj = starWarsCharacters[i];
-  const name = nameObj.name;
-  console.log(name);
+  const character = starWarsCharacters[i];
+  charactersNames.push(character.name);
 }
+console.log(charactersNames);
 
 /* ESERCIZIO 3
   Seguendo i passaggi precedenti crea un nuovo array chiamato "femaleCharacters" e inserisci al suo interno tutti gli oggetti femminili.
@@ -242,17 +242,14 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
   Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
 */
 
-console.log("caratteristiche prima", charactersNames.length);
-
 for (let i = 0; i < charactersNames.length; i++) {
-  const character = characters[i];
+  const characterStr = charactersNames[i];
 
-  for (let m = 0; i < femaleCharacters.length; m++) {
-    const female = femaleCharacters[m];
+  for (let m = 0; m < femaleCharacters.length; m++) {
+    const femaleCharacter = femaleCharacters[m];
 
-    if (female.name === character) {
-      console.log("Female", character);
-      character.splice(i, 1);
+    if (femaleCharacter.name === characterStr) {
+      charactersNames.splice(i, 1);
     }
   }
 }
@@ -261,3 +258,19 @@ console.log("caratteristiche dopo", charactersNames.length);
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+const randomIndex = Math.floor(Math.random() * starWarsCharacters.length);
+const selectedCharacter = starWarsCharacters[randomIndex];
+
+if (selectedCharacter.gender === "female") {
+  console.log("She is", selectedCharacter.height, "cm tall");
+} else {
+  console.log("He is", selectedCharacter.height, "cmm tall");
+}
+
+if (selectedCharacter.hair_color !== "n/a" && selectedCharacter.hair_color !== "none") {
+  console.log("and has", selectedCharacter.hair_color, "hair,");
+} else {
+  console.log("and bald,");
+}
+
+console.log("with", selectedCharacter.skin_color, "skin.");
